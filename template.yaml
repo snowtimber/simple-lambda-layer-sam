@@ -6,37 +6,37 @@ Resources:
   PythonFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: src/python/
+      CodeUri: python/
       Handler: lambda.handler
       Runtime: python3.12
       Layers:
         - !Ref PythonDependenciesLayer
+
+  NodejsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: nodejs/
+      Handler: lambda.handler
+      Runtime: nodejs18.x
+      Layers:
+        - !Ref NodejsDependenciesLayer
 
   PythonDependenciesLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
       LayerName: python-dependencies-layer
       Description: Dependencies for the Python Lambda function
-      ContentUri: src/python/layer/
+      ContentUri: python/layer/
       CompatibleRuntimes:
         - python3.12
       RetentionPolicy: Retain
-
-  NodejsFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/nodejs/
-      Handler: lambda.handler
-      Runtime: nodejs18.x
-      Layers:
-        - !Ref NodejsDependenciesLayer
 
   NodejsDependenciesLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
       LayerName: nodejs-dependencies-layer
       Description: Dependencies for the Node.js Lambda function
-      ContentUri: src/nodejs/layer/
+      ContentUri: nodejs/layer/
       CompatibleRuntimes:
         - nodejs18.x
       RetentionPolicy: Retain
