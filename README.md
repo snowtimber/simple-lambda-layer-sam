@@ -6,8 +6,8 @@ This project demonstrates how to build and invoke AWS Lambda Layers using Python
 
 - AWS CLI
 - AWS SAM CLI
-- Python 3.8 or later
-- Node.js 14.x or later
+- Python 3.12 or later
+- Node.js 18.x or later
 
 ## Project Structure
 
