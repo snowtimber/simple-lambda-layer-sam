@@ -1,0 +1,8 @@
+{
+    "name": "nodejs-lambda-layer",
+    "version": "1.0.0",
+    "description": "Dependencies for Node.js Lambda function",
+    "dependencies": {
+      "moment-timezone": "^0.5.43"
+    }
+  }

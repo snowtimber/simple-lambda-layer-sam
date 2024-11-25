@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: AWS Lambda Layer Demo for Python and Node.js
+
+Resources:
+  PythonFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/python/
+      Handler: lambda.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref PythonDependenciesLayer
+
+  NodejsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/nodejs/
+      Handler: lambda.handler
+      Runtime: nodejs14.x
+      Layers:
+        - !Ref NodejsDependenciesLayer
+
+  PythonDependenciesLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: python-dependencies-layer
+      Description: Dependencies for the Python Lambda function
+      ContentUri: src/python/layer/
+      CompatibleRuntimes:
+        - python3.8
+      RetentionPolicy: Retain
+
+  NodejsDependenciesLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: nodejs-dependencies-layer
+      Description: Dependencies for the Node.js Lambda function
+      ContentUri: src/nodejs/layer/
+      CompatibleRuntimes:
+        - nodejs14.x
+      RetentionPolicy: Retain
+
+Outputs:
+  PythonFunction:
+    Description: "Python Lambda Function ARN"
+    Value: !GetAtt PythonFunction.Arn
+  NodejsFunction:
+    Description: "Node.js Lambda Function ARN"
+    Value: !GetAtt NodejsFunction.Arn
