@@ -30,6 +30,9 @@ Resources:
       CompatibleRuntimes:
         - python3.12
       RetentionPolicy: Retain
+    Metadata:
+      BuildMethod: python3.12
+      BuildArchitecture: x86_64
 
   NodejsDependenciesLayer:
     Type: AWS::Serverless::LayerVersion
@@ -40,6 +43,9 @@ Resources:
       CompatibleRuntimes:
         - nodejs18.x
       RetentionPolicy: Retain
+    Metadata:
+      BuildMethod: nodejs18.x
+      BuildArchitecture: x86_64
 
 Outputs:
   PythonFunction:

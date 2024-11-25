@@ -51,6 +51,19 @@ lambda-layer-demo/
 
 ## Testing
 
+You have 2 options:
+
+First, you can log into the AWS console, navigate to lambda and run a Test with the following input:
+```
+{
+  "key1": "value1",
+  "key2": "value2",
+  "key3": "value3"
+}
+```
+
+or if you have docker installed locally, you can test locally with this:
+
 1. Invoke the Python Lambda function:
    ```
    sam local invoke PythonFunction
