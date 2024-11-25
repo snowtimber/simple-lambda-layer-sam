@@ -66,9 +66,9 @@ You have 2 options:
 First, you can log into the AWS console, navigate to Lambda and run a Test with the following input:
 ```json
 {
-  \"key1\": \"value1\",
-  \"key2\": \"value2\",
-  \"key3\": \"value3\"
+  "key1": "value1",
+  "key2": "value2",
+  "key3": "value3"
 }
 ```
 
